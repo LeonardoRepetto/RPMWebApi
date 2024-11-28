@@ -1,17 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class ClienteController : ApiController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ClienteController : ControllerBase
     {
         // GET api/<controller>
+        [HttpGet()]
         public List<Cliente> Get()
         {
             return ClienteData.Listar();
@@ -23,11 +26,12 @@ namespace WebAPI.Controllers
         //}
 
         // GET api/<controller>/5
+        [HttpGet("{id:int}")]
         public Cliente Get(int id)
         {
             return ClienteData.Obtener(id);
         }
-
+        [HttpGet("{NombreCliente}")]
         public List<Cliente> Get(string NombreCliente)
         {
             return ClienteData.ListarPorNombre(NombreCliente);

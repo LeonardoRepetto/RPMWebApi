@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class ServicioController : ApiController
+    [ApiController]
+    [Route("[controller]")]
+    public class ServicioController : ControllerBase
     {
-        // GET api/<controller>
+        // GET api/<controller>4
+        [HttpGet()]
         public List<Servicio> Get()
         {
             return ServicioData.Listar();
         }
 
-        // GET api/<controller>/5
+        [HttpGet("{id:int}")]
         public Servicio Get(int id)
         {
             return ServicioData.Obtener(id);
@@ -36,7 +34,7 @@ namespace WebAPI.Controllers
         // PUT api/<controller>/5
         [HttpPut]
         [Route("api/servicio/ActualizarDetalles/{id}")]
-        public IHttpActionResult PutActualizarDetalles(int id, [FromBody] Servicio oServicio)
+        public IActionResult PutActualizarDetalles(int id, [FromBody] Servicio oServicio)
         {
             bool resultado = ServicioData.Modificar(oServicio);
 
@@ -53,7 +51,7 @@ namespace WebAPI.Controllers
         // PUT api/<controller>/5
         [HttpPut]
         [Route("api/servicio/ModificarEstado/{id}")]
-        public IHttpActionResult PutModificarEstado(int id, [FromBody] Servicio oServicio)
+        public IActionResult PutModificarEstado(int id, [FromBody] Servicio oServicio)
         {
             bool resultado = ServicioData.ModificarEstado(oServicio);
 

@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class TipoServicioController : ApiController
+    [ApiController]
+    [Route("[controller]")]
+    public class TipoServicioController : ControllerBase
     {
         // GET api/<controller>
+        [HttpGet()]
         public List<TipoServicio> Get()
         {
             return TipoServicioData.Listar();
         }
 
         // GET api/<controller>/5
+        [HttpGet("{IdEstado:int}")]
         public List<TipoServicio> Get(int IdEstado)
         {
             return TipoServicioData.ObtenerEstado(IdEstado);

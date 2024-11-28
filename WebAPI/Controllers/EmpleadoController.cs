@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class EmpleadoController : ApiController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class EmpleadoController : ControllerBase
     {
-        // GET api/<controller>
+        [HttpGet()]
         public List<Empleado> Get()
         {
             return EmpleadoData.Listar();
         }
 
         // GET api/<controller>/5
+        [HttpGet("{id:int}")]
         public Empleado Get(int id)
         {
             return EmpleadoData.Obtener(id);

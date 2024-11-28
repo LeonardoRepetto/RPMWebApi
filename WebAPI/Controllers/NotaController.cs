@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class NotaController : ApiController
+    [ApiController]
+    [Route("[controller]")]
+    public class NotaController : ControllerBase
     {
-        // GET api/<controller>
+        [HttpGet()]
         public List<Nota> Get()
         {
             return NotaData.Listar();
         }
 
-        // GET api/<controller>/5
+        [HttpGet("{IdEstado:int}")]
         public List<Nota> Get(int IdEstado)
         {
             return NotaData.ObtenerEstado(IdEstado);

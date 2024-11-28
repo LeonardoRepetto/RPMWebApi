@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebAPI.Data;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class GarantiaController : ApiController
+    [ApiController]
+    [Route("[controller]")]
+    public class GarantiaController : ControllerBase
     {
         // GET api/<controller>
         public List<Garantia> Get()
