@@ -5,35 +5,41 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class GarantiaController : ControllerBase
     {
-        // GET api/<controller>
+        // GET api/garantia
+        [HttpGet]
         public List<Garantia> Get()
         {
             return GarantiaData.Listar();
         }
 
-        // GET api/<controller>/5
-       //public List<Garantia> Get(int IdEstado)
-       // {
-       //     return GarantiaData.ObtenerEstado(IdEstado);
-       // }
+        // GET api/garantia/5
+        //public List<Garantia> Get(int IdEstado)
+        //{
+        //    return GarantiaData.ObtenerEstado(IdEstado);
+        //}
 
-        // POST api/<controller>
+        // POST api/garantia
+        [HttpPost]
         public bool Post([FromBody] Garantia oGarantia)
         {
             return GarantiaData.Registrar(oGarantia);
         }
 
-        // PUT api/<controller>/5
+        // PUT api/garantia/5
+        [HttpPut("{id:int}")]
         public void Put(int id, [FromBody] string value)
         {
+            // Implementar la lógica de actualización de Garantia
         }
 
-        // DELETE api/<controller>/5
+        // DELETE api/garantia/5
+        [HttpDelete("{id:int}")]
         public void Delete(int id)
         {
+            // Implementar la lógica de eliminación de Garantia
         }
     }
 }

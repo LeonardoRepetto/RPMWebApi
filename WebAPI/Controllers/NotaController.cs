@@ -5,10 +5,10 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class NotaController : ControllerBase
     {
-        [HttpGet()]
+        [HttpGet]
         public List<Nota> Get()
         {
             return NotaData.Listar();
@@ -21,16 +21,19 @@ namespace WebAPI.Controllers
         }
 
         // POST api/<controller>
+        [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
         // PUT api/<controller>/5
+        [HttpPut("{id:int}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<controller>/5
+        [HttpDelete("{id:int}")]
         public void Delete(int id)
         {
         }

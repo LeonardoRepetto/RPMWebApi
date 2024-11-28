@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using WebAPI.Data;
 using WebAPI.Models;
 
@@ -8,32 +9,36 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class EmpleadoController : ControllerBase
     {
-        [HttpGet()]
+        // GET api/empleado
+        [HttpGet]
         public List<Empleado> Get()
         {
             return EmpleadoData.Listar();
         }
 
-        // GET api/<controller>/5
+        // GET api/empleado/5
         [HttpGet("{id:int}")]
         public Empleado Get(int id)
         {
             return EmpleadoData.Obtener(id);
         }
 
-        // POST api/<controller>
+        // POST api/empleado
+        [HttpPost]
         public bool Post([FromBody] Empleado oEmpleado)
         {
             return EmpleadoData.Registrar(oEmpleado);
         }
 
-        // PUT api/<controller>/5
+        // PUT api/empleado/5
+        [HttpPut("{id:int}")]
         public bool Put(int id, [FromBody] Empleado oEmpleado)
         {
             return EmpleadoData.Modificar(oEmpleado);
         }
 
-        // DELETE api/<controller>/5
+        // DELETE api/empleado/5
+        [HttpDelete("{id:int}")]
         public bool Delete(int id)
         {
             return EmpleadoData.Eliminar(id);

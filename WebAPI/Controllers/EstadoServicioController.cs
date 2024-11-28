@@ -5,36 +5,42 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class EstadoServicioController : ControllerBase
     {
-        // GET api/<controller>
-        [HttpGet()]
+        // GET api/estadoservicio
+        [HttpGet]
         public List<EstadoServicio> Get()
         {
             return EstadoServicioData.Listar();
         }
 
-        // GET api/<controller>/5
+        // GET api/estadoservicio/5
         [HttpGet("{IdEstado:int}")]
         public List<EstadoServicio> Get(int IdEstado)
         {
             return EstadoServicioData.ObtenerEstado(IdEstado);
         }
 
-        // POST api/<controller>
+        // POST api/estadoservicio
+        [HttpPost]
         public void Post([FromBody] string value)
         {
+            // Implementar lógica para agregar un nuevo EstadoServicio
         }
 
-        // PUT api/<controller>/5
+        // PUT api/estadoservicio/5
+        [HttpPut("{id:int}")]
         public void Put(int id, [FromBody] string value)
         {
+            // Implementar lógica para actualizar un EstadoServicio
         }
 
-        // DELETE api/<controller>/5
+        // DELETE api/estadoservicio/5
+        [HttpDelete("{id:int}")]
         public void Delete(int id)
         {
+            // Implementar lógica para eliminar un EstadoServicio
         }
     }
 }

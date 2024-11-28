@@ -5,11 +5,11 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TipoServicioController : ControllerBase
     {
         // GET api/<controller>
-        [HttpGet()]
+        [HttpGet]
         public List<TipoServicio> Get()
         {
             return TipoServicioData.Listar();
@@ -23,17 +23,20 @@ namespace WebAPI.Controllers
         }
 
         // POST api/<controller>
+        [HttpPost]
         public bool Post([FromBody] TipoServicio oTipoServicio)
         {
             return TipoServicioData.Registrar(oTipoServicio);
         }
 
         // PUT api/<controller>/5
+        [HttpPut("{id:int}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<controller>/5
+        [HttpDelete("{id:int}")]
         public bool Delete(int id)
         {
             return TipoServicioData.Eliminar(id);
