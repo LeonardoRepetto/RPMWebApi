@@ -16,8 +16,7 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/Usuario/5
-        [HttpGet]
-        [Route("api/usuario/{ci}")]
+        [HttpGet("{ci}")]
         public Usuario Get(int ci)
         {
             return UsuarioData.Obtener(ci);
