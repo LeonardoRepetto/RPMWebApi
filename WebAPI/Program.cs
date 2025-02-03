@@ -12,11 +12,14 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var corsSettings = builder.Configuration.GetSection("CorsSettings").Get<CorsSettings>();
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("https://rpm-tecno-web-dev.azurewebsites.net")
+        policy.WithOrigins(corsSettings.AllowedOrigins.ToArray())
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -40,3 +43,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+public class CorsSettings
+{
+    public string[] AllowedOrigins { get; set; }
+}
